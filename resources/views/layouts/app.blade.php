@@ -10,7 +10,8 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        <link href="{{ asset('plugins/bootstrap/5.3.2/css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('plugins/fontawesome/6.4.2/free/css/all.min.css') }}" rel="stylesheet" />
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -38,8 +39,8 @@
             </main>
         </div>
 
+        <script src="{{ asset('plugins/bootstrap/5.3.2/js/bootstrap.bundle.min.js') }}"></script>
         @stack('modals')
-
         @livewireScripts
     </body>
 </html>

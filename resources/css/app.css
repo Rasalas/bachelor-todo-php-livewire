@@ -5,3 +5,33 @@
 [x-cloak] {
     display: none;
 }
+
+.task-list ul,
+ul.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list ul li,
+ul.project-list li {
+  padding: 0.75rem 0;
+  border: 1px solid #d8deea;
+  background-color: #ffffff;
+  border-radius: 13px;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.task-list ul li:hover,
+ul.project-list li:hover {
+  background-color: #d8deea;
+  cursor: pointer;
+}
+
+.task-list__title{
+  background-color: #ebeff8;
+  padding: 0.75rem 1rem;
+  font-size: 12px;
+  text-transform: uppercase;
+}
