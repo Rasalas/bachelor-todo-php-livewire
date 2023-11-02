@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('name');
 
             $table->string('key')->unique();
+
+            $table->string('icon')->nullable();
+
+            $table->string('color')->nullable();
             
             $table->timestamps();
         });
