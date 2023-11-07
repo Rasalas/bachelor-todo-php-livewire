@@ -23,12 +23,12 @@ class TaskList extends Component
 
     public function refreshTasks()
     {
-        $this->tasks = Task::all();
+        $this->tasks = Task::with('status')->get();
     }
 
     public function onTaskDeleted()
     {
-        $this->tasks = Task::all();
+        $this->tasks = Task::with('status')->get();
     }
 
     public function render()

@@ -3,6 +3,7 @@
 namespace App\Livewire\Tasks;
 
 use App\Models\Task;
+use App\Models\TaskStatus;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -38,23 +39,25 @@ class TaskForm extends Component
             'description' => 'nullable|string',
             'status' => 'required|string|in:todo,backlog,waiting,review,done,cancelled',
         ]);
+
+        $statusKey = $this->status;
+        $status = TaskStatus::where('key', $statusKey)->firstOrFail();
+
+        $taskData = [
+            'title' => $this->title,
+            'description' => $this->description,
+            'status_id' => $status->id,
+        ];
         
         if (!empty($this->id)) {
             $task = Task::find($this->id);
             if($task){
-                $task->update([
-                    'title' => $this->title,
-                    'description' => $this->description,
-                ]);
+                $task->update($taskData);
     
                 $this->dispatch('task-updated', $task);
             }
         } else {
-
-            $task = Task::create([
-                'title' => $this->title,
-                'description' => $this->description,
-            ]);
+            $task = Task::create($taskData);
             $this->id = $task->id;
 
             $this->dispatch('task-created', $task);

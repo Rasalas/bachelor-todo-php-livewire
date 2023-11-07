@@ -16,7 +16,7 @@ class TaskOverview extends Component
 
     public function mount()
     {
-        $this->tasks = Task::all();
+        $this->tasks = Task::with('status')->get();
     }
 
     public function new()
