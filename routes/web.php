@@ -27,5 +27,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     
-    Route::get('/tasks', TaskOverview::class);
+    Route::get('/tasks', TaskOverview::class)->name('tasks');
 });
