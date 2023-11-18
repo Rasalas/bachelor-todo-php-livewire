@@ -9,7 +9,7 @@
             </header>
         </div>
         <div class="col-md-6">
-            <livewire:tasks.task-list :tasks="$tasks" />
+            <livewire:tasks.task-list :statuses="$statuses" />
         </div>
         <div class="col-md-6">
             <livewire:tasks.task-form :task="$selectedTask" />

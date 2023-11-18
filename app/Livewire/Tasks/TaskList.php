@@ -3,12 +3,13 @@
 namespace App\Livewire\Tasks;
 
 use App\Models\Task;
+use App\Models\TaskStatus;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class TaskList extends Component
 {
-    public $tasks;
+    public $statuses;
 
     protected $listeners = [
         'task-deleted' => 'onTaskDeleted',
@@ -16,19 +17,20 @@ class TaskList extends Component
         'task-created' => 'refreshTasks',
     ];
 
-    public function mount($tasks)
+    public function mount($statuses)
     {
-        $this->tasks = $tasks;
+        $this->statuses = $statuses;
     }
 
     public function refreshTasks()
     {
-        $this->tasks = Task::with('status')->get();
+        $this->statuses = TaskStatus::with('tasks')->get();
+        dd($this->statuses);
     }
 
     public function onTaskDeleted()
     {
-        $this->tasks = Task::with('status')->get();
+        $this->statuses = TaskStatus::with('tasks')->get();
     }
 
     public function render()

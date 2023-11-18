@@ -3,6 +3,7 @@
 namespace App\Livewire\Tasks;
 
 use App\Models\Task;
+use App\Models\TaskStatus;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
@@ -11,12 +12,12 @@ use Livewire\Component;
 
 class TaskOverview extends Component
 {
-    public $tasks;
+    public $statuses;
     public $selectedTask = null;
 
     public function mount()
     {
-        $this->tasks = Task::with('status')->get();
+        $this->statuses = TaskStatus::with('tasks')->get();
     }
 
     public function new()

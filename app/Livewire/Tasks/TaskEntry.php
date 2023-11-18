@@ -19,7 +19,6 @@ class TaskEntry extends Component
 
     public function setSelected(Task $task)
     {
-        
         $this->dispatch('task-selected', $task);
     }
 
@@ -29,13 +28,9 @@ class TaskEntry extends Component
         $this->dispatch('task-deleted', $this->task);
     }
 
-    public function refreshTask(Task $updatedTask)
+    public function refreshTask()
     {
-        if ($updatedTask) {
-            if ($this->task->id == $updatedTask->id) {
-                $this->task = $updatedTask;
-            }
-        }
+        // do nothing - this refreshes the entry on its own
     }
 
     public function render()
